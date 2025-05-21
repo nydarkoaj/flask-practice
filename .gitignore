@@ -1,2 +1,3 @@
 flask-getting-started/
-/home/nanayaw/flask_practice/__pycache__/
+__pycache__/
+.env

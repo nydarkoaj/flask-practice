@@ -5,6 +5,7 @@ from model import db
 # create flask object
 app = Flask(__name__)
 
+# create welcome page
 @app.route("/")
 def welcome():
     return render_template('welcome.html')# "welcome to my flask app"
