@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nyra Technologies</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Nyra Technologies: custom websites, SEO and marketing analytics, data services, ERP and hospital systems, AI and RAG knowledge bases, and mobile apps. Built in Ghana for the world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: indigo hero band with the mark, then alternating mist/indigo bands; a résumé-style "ledger" carries the founder story. */
+:root{
+  --indigo:#18184A; --ink:#0B0C24; --gold:#F0A818; --teal:#0E8A82; --mist:#EEF1F8;
+  --bg:#F7F8FC; --surface:#FFFFFF; --fg:#16173A; --muted:#565A80; --line:#DCDFEE;
+  --band:#18184A; --band-fg:#EEF1F8; --band-muted:#B9BEE0; --accent:#0B6F69; --gold-ink:#8A5A00;
+  --display:"Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --body:"Instrument Sans", "Inter", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px)); --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B0C24; --surface:#13143A; --fg:#EEF1F8; --muted:#A8ADD3; --line:#262862;
+  --band:#13143A; --band-fg:#EEF1F8; --band-muted:#A8ADD3; --accent:#3CC4BA; --gold-ink:#F0A818; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B0C24; --surface:#13143A; --fg:#EEF1F8; --muted:#A8ADD3; --line:#262862;
+  --band:#13143A; --band-fg:#EEF1F8; --band-muted:#A8ADD3; --accent:#3CC4BA; --gold-ink:#F0A818; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+.eyebrow{font:500 13px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
+.band .eyebrow{color:var(--gold)}
+section{padding-block:88px}
+.band{background:var(--band);color:var(--band-fg)}
+
+/* nav */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--indigo);color:var(--mist);border-bottom:1px solid #ffffff14}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--indigo)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 24px/1 var(--display);letter-spacing:-.03em}
+.brand svg{width:34px;height:34px}
+.brand .dot{color:var(--gold)}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav ul a{text-decoration:none;opacity:.85}.nav ul a:hover{opacity:1;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--ink);font:600 15px/1 var(--body);padding:13px 20px;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* hero */
+.hero{background:var(--indigo);color:var(--mist);position:relative;overflow:hidden;padding-block:96px 104px}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{font-size:20px;color:#C9CDEA;max-width:34em;margin:24px 0 32px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.name-key{font:500 14px/1.5 var(--mono);color:#C9CDEA;margin-top:36px;letter-spacing:.04em}
+.name-key b{color:var(--gold);font-weight:500}
+.hero video{width:100%;max-width:100%;aspect-ratio:16/9;border-radius:14px;display:block;background:#0B0C24;box-shadow:0 30px 80px -30px #000c}
+.hero figcaption{font:500 12px/1.4 var(--mono);color:#9CA1CC;margin-top:10px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+
+/* founder */
+.founder .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px}
+.founder h2{font-size:clamp(34px,4.5vw,52px);margin-top:14px}
+.founder .intro p{color:var(--muted);max-width:34em}
+.founder .intro p:first-of-type{color:var(--fg);font-size:20px}
+.ledger{list-style:none;margin:0;padding:0;border-top:2px solid var(--fg)}
+.ledger li{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.ledger .when{font:500 13px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:4px}
+.ledger h3{font-size:24px}
+.ledger p{margin:6px 0 0;color:var(--muted);font-size:16px}
+@media (max-width:860px){.founder .wrap{grid-template-columns:1fr;gap:40px}}
+@media (max-width:480px){.ledger li{grid-template-columns:1fr;gap:6px}}
+
+/* services */
+.services h2{font-size:clamp(34px,4.5vw,52px);margin:14px 0 12px;max-width:16em}
+.services .sub{color:var(--band-muted);max-width:40em;margin:0 0 48px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#ffffff1f;border:1px solid #ffffff1f;border-radius:16px;overflow:hidden}
+.svc{background:var(--band);padding:30px 28px 32px;display:flex;flex-direction:column;gap:10px}
+.svc .tag{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.svc h3{font-size:24px}
+.svc p{margin:0;color:var(--band-muted);font-size:16px}
+@media (max-width:900px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.svc-grid{grid-template-columns:1fr}}
+
+/* approach */
+.approach h2{font-size:clamp(30px,4vw,44px);margin:14px 0 40px;max-width:18em}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--fg);padding-top:16px}
+.steps li::before{content:"Step " counter(s);font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.steps h3{font-size:22px;margin:12px 0 8px}
+.steps p{margin:0;color:var(--muted);font-size:16px}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* brand */
+.brandkit h2{font-size:clamp(30px,4vw,44px);margin:14px 0 12px}
+.brandkit .sub{color:var(--muted);max-width:40em;margin:0 0 36px}
+.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.sw{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.sw .chip{height:110px}
+.sw .meta{padding:12px 14px}
+.sw b{display:block;font:600 15px/1.3 var(--display)}
+.sw code{font:500 12px/1.4 var(--mono);color:var(--muted)}
+@media (max-width:860px){.swatches{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* contact */
+.contact .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.contact h2{font-size:clamp(36px,5vw,60px);margin-top:14px}
+.contact h2 em{font-style:normal;color:var(--gold)}
+.contact p{color:var(--band-muted);max-width:30em}
+form{display:grid;gap:14px;background:#ffffff0d;border:1px solid #ffffff1f;border-radius:16px;padding:24px}
+label{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--band-muted);display:grid;gap:8px}
+input,select,textarea{font:400 16px/1.4 var(--body);color:var(--band-fg);background:#0B0C2466;border:1px solid #ffffff2a;border-radius:10px;padding:12px 14px;width:100%}
+textarea{min-height:110px;resize:vertical}
+select option{color:#16173A}
+.note{font-size:14px;color:var(--gold);min-height:1.4em;margin:0}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+footer{background:var(--ink);color:#9CA1CC;font-size:14px;padding-block:28px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.hero canvas{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Nyra Technologies home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#F0A818" fill-opacity=".14"/><path d="M18 46V18L42 46V29M42 29L35 17M42 29L49 17" fill="none" stroke="#EEF1F8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="29" r="4.2" fill="#F0A818"/></svg>
+      <span>nyra<span class="dot">.</span></span>
+    </a>
+    <ul>
+      <li><a href="#founder">Background</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#brand">Brand</a></li>
+    </ul>
+    <a class="btn" href="#contact">Start a project</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Nyra Technologies · Ghana</div>
+      <h1 style="margin-top:18px">Software, data and AI, built in Ghana <em>for the world.</em></h1>
+      <p class="lead">We design and build the systems organisations run on: websites that rank, data you can trust, ERP and hospital platforms, mobile apps, and AI assistants that know your business.</p>
+      <div class="ctas">
+        <a class="btn" href="#contact">Book a discovery call</a>
+        <a class="btn ghost" href="#services">See what we build</a>
+      </div>
+      <p class="name-key">The name: <b>N</b>.<b>Y</b>. + <b>R</b>egan <b>A</b>zenab = <b>NYRA</b></p>
+    </div>
+    <figure style="margin:0">
+      <video src="video/nyra-promo.mp4" poster="video/still-logo.png" controls muted playsinline preload="metadata"></video>
+      <figcaption>Watch · 21 seconds</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow">The founder</div>
+      <h2>Banking-grade discipline. Global delivery experience.</h2>
+      <p>I started Nyra after years of building software and data systems for some of the most demanding environments in West Africa and beyond.</p>
+      <p>I hold a BSc in Computer Science. I began my career in Ghana's financial sector at Ecobank and Comsys, where reliability, security and audit trails are not optional. I then spent years as a data and software engineer at AmaliTech, contributing to impactful projects for clients across the world.</p>
+      <p>Nyra brings that experience to businesses, hospitals, schools and public institutions that need technology built properly the first time.</p>
+    </div>
+    <ol class="ledger" aria-label="Career background">
+      <li><span class="when">Foundation</span><div><h3>BSc Computer Science</h3><p>Algorithms, databases, software engineering and systems design.</p></div></li>
+      <li><span class="when">Banking</span><div><h3>Ecobank</h3><p>Technology work inside one of Ghana's most prestigious banks, where uptime and data integrity carry real money.</p></div></li>
+      <li><span class="when">Fintech</span><div><h3>Comsys</h3><p>Enterprise technology delivery with one of Ghana's leading technology companies.</p></div></li>
+      <li><span class="when">Global</span><div><h3>AmaliTech</h3><p>Years as a data and software engineer, contributing to impactful projects for clients around the world.</p></div></li>
+      <li><span class="when">Now</span><div><h3>Nyra Technologies</h3><p>Founder and principal engineer, bringing all of it to your project.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="services band" id="services">
+  <div class="wrap">
+    <div class="eyebrow">Services</div>
+    <h2>Six things we do, end to end.</h2>
+    <p class="sub">From a first website to an organisation-wide platform, one team handles design, engineering, data and launch.</p>
+    <div class="svc-grid">
+      <article class="svc"><span class="tag">Web</span><h3>Custom websites</h3><p>Fast, accessible sites designed around your brand and built to convert, with a CMS your team can actually use.</p></article>
+      <article class="svc"><span class="tag">Growth</span><h3>SEO &amp; marketing analytics</h3><p>Technical SEO, search visibility and dashboards that tie traffic and campaigns to leads and revenue.</p></article>
+      <article class="svc"><span class="tag">Data</span><h3>Data services</h3><p>Pipelines, warehouses and reporting that turn scattered spreadsheets and databases into one reliable source of truth.</p></article>
+      <article class="svc"><span class="tag">Operations</span><h3>ERP &amp; hospital management</h3><p>ERP implementations and hospital management systems covering patients, billing, pharmacy, inventory and HR.</p></article>
+      <article class="svc"><span class="tag">AI</span><h3>AI integrations &amp; RAG knowledge bases</h3><p>Private AI assistants that answer staff questions from your own policies, manuals and records, with sources cited.</p></article>
+      <article class="svc"><span class="tag">Mobile</span><h3>Mobile apps</h3><p>iOS and Android apps for customers and field teams, connected to the systems you already run.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="wrap">
+    <div class="eyebrow">How we work</div>
+    <h2>A clear path from first call to live system.</h2>
+    <ol class="steps">
+      <li><h3>Discover</h3><p>We map your goals, users, data and existing tools before proposing anything.</p></li>
+      <li><h3>Design</h3><p>Architecture, user flows and a fixed-scope plan with costs you can budget for.</p></li>
+      <li><h3>Build</h3><p>Short iterations with working demos, so you see progress every week or two.</p></li>
+      <li><h3>Launch &amp; support</h3><p>Training, handover documentation and ongoing support once you are live.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="brandkit" id="brand" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">The brand</div>
+    <h2>Colours with a Ghanaian root.</h2>
+    <p class="sub">Deep indigo for trust, Adinkra gold for craft, lagoon teal for data and growth. The mark joins N and Y, with a gold node where the paths meet.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#18184A"></div><div class="meta"><b>Midnight Indigo</b><code>#18184A · primary</code></div></div>
+      <div class="sw"><div class="chip" style="background:#F0A818"></div><div class="meta"><b>Adinkra Gold</b><code>#F0A818 · accent</code></div></div>
+      <div class="sw"><div class="chip" style="background:#0E8A82"></div><div class="meta"><b>Lagoon Teal</b><code>#0E8A82 · data</code></div></div>
+      <div class="sw"><div class="chip" style="background:#EEF1F8"></div><div class="meta"><b>Harmattan Mist</b><code>#EEF1F8 · light</code></div></div>
+      <div class="sw"><div class="chip" style="background:#0B0C24"></div><div class="meta"><b>Night Ink</b><code>#0B0C24 · dark</code></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact band" id="contact">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2>Let's build <em>what's next.</em></h2>
+      <p>Tell us about your project. We reply within one working day with next steps and a time for a discovery call.</p>
+    </div>
+    <form id="contact-form" novalidate>
+      <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+      <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
+      <label for="f-need">What do you need?
+        <select id="f-need" name="need">
+          <option>Custom website</option><option>SEO &amp; marketing analytics</option><option>Data services</option>
+          <option>ERP / hospital management system</option><option>AI integration / RAG knowledge base</option><option>Mobile app</option><option>Not sure yet</option>
+        </select></label>
+      <label for="f-msg">Project details<textarea id="f-msg" name="message"></textarea></label>
+      <button class="btn" type="submit">Send enquiry</button>
+      <p class="note" id="f-note" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© 2026 Nyra Technologies</span><span>Software · Data · AI · Ghana</span></div>
+</footer>
+
+<script>
+// ambient node network in the hero (mirrors the video)
+(function(){
+  const c=document.getElementById('net');if(!c||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const x=c.getContext('2d');let W,H,dpr=Math.min(2,window.devicePixelRatio||1),seed=7;
+  const r=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const N=Array.from({length:46},()=>({x:r(),y:r(),vx:(r()-.5)*.012,vy:(r()-.5)*.012,g:r()<.18}));
+  function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+  size();addEventListener('resize',size);
+  function frame(ts){
+    const t=ts/1000;x.clearRect(0,0,W,H);
+    const p=N.map(n=>({x:((n.x+n.vx*t)%1+1)%1*W,y:((n.y+n.vy*t)%1+1)%1*H,g:n.g}));
+    for(let i=0;i<p.length;i++)for(let j=i+1;j<p.length;j++){const d=Math.hypot(p[i].x-p[j].x,p[i].y-p[j].y);
+      if(d<170){x.strokeStyle=`rgba(238,241,248,${.14*(1-d/170)})`;x.beginPath();x.moveTo(p[i].x,p[i].y);x.lineTo(p[j].x,p[j].y);x.stroke()}}
+    for(const q of p){x.fillStyle=q.g?'rgba(240,168,24,.9)':'rgba(238,241,248,.35)';x.beginPath();x.arc(q.x,q.y,q.g?3:2,0,7);x.fill()}
+    requestAnimationFrame(frame)}
+  requestAnimationFrame(frame);
+})();
+// TODO: connect to a form backend (e.g. a Flask POST route or a form service). Front-end only until a backend or form service is connected
+document.getElementById('contact-form').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target,note=document.getElementById('f-note');
+  if(!f.name.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)){note.textContent='Add your name and a valid email address so we can reply.';return}
+  note.textContent='Thanks, '+f.name.value.trim().split(' ')[0]+'. Online enquiries open soon. Until then, please reach us directly by phone or email.';
+});
+</script>
+</body>
+</html>
