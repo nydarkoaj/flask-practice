@@ -2,131 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Ananse promo (video source)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<title>Promo video source</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
-  /* Source for ananse-promo.mp4. render(t) draws the frame at t seconds; render.js steps it at 30fps. */
-  :root{--forest:#0E2420;--ink:#07130F;--gold:#F2B53A;--jade:#2BB58A;--paper:#F3F6F4;--soft:#BFD2CA;
-    --display:"Bricolage Grotesque",Inter,sans-serif;--body:"Instrument Sans",Inter,sans-serif;--mono:"IBM Plex Mono","JetBrains Mono",monospace}
-  html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:var(--forest)}
-  #stage{position:relative;width:1280px;height:720px;overflow:hidden;color:var(--paper);font-family:var(--body);
-    background:radial-gradient(1100px 700px at 90% 110%, #2BB58A26, transparent 60%), var(--forest)}
-  canvas{position:absolute;inset:0}
+  /* PLACEHOLDER DESIGN: neutral greyscale until the brand is decided. render(t) draws the frame at t seconds. */
+  :root{--bg:#FAFAFA;--fg:#18181B;--muted:#71717A;--line:#E4E4E7;--dark:#18181B;--font:"Inter",system-ui,sans-serif}
+  html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:var(--bg)}
+  #stage{position:relative;width:1280px;height:720px;overflow:hidden;color:var(--fg);font-family:var(--font);background:var(--bg)}
   .scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 110px;opacity:0}
   .center{align-items:center;text-align:center}
-  .eyebrow{font-family:var(--mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-  h2{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.04}
-  .wordmark{font-family:var(--display);font-weight:800;font-size:140px;letter-spacing:-.04em;line-height:1}
-  .wordmark .dot{color:var(--gold)}
-  .sub{font-size:30px;color:var(--soft);margin-top:16px}
-  .sub b{color:var(--gold);font-weight:600}
+  .eyebrow{font-size:18px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  h2{margin:0;letter-spacing:-.03em;line-height:1.05;font-weight:800}
+  .big{font-size:76px}
   .line{display:block}
-  .big{font-size:80px;font-weight:700}
-  em{font-style:normal;color:var(--gold)}
-  .row{display:flex;align-items:baseline;gap:28px;margin:14px 0}
-  .row .k{font-family:var(--mono);font-size:20px;color:var(--jade);width:150px;letter-spacing:.08em;text-transform:uppercase}
-  .row .v{font-family:var(--display);font-size:52px;font-weight:700}
-  .row .v small{font-family:var(--body);font-weight:400;font-size:24px;color:var(--soft);display:block;margin-top:4px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 40px;margin-top:26px}
-  .svc{display:flex;align-items:center;gap:18px;font-size:32px;font-weight:600;font-family:var(--display)}
-  .svc i{width:14px;height:14px;border-radius:50%;background:var(--gold);flex:none}
-  .flow{display:flex;align-items:center;gap:22px;margin-top:40px}
-  .step{border:2px solid #F3F6F44d;border-radius:18px;padding:22px 26px;min-width:210px}
-  .step .k{font-family:var(--mono);font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--jade)}
-  .step .v{font-family:var(--display);font-size:34px;font-weight:700;margin-top:8px}
-  .arrow{font-size:40px;color:var(--gold)}
-  .mark svg{width:170px;height:170px}
-  .bar{position:absolute;left:0;bottom:0;height:6px;background:var(--gold)}
+  .ph{display:flex;align-items:center;justify-content:center;border:3px dashed var(--fg);border-radius:20px;width:150px;height:150px;font-size:18px;font-weight:700;letter-spacing:.12em}
+  .name{font-size:96px;font-weight:800;letter-spacing:-.04em;margin-top:28px}
+  .sub{font-size:28px;color:var(--muted);margin-top:14px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}
+  .card{border:2px solid var(--line);border-radius:18px;padding:24px 28px;background:#fff}
+  .card .k{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .card .v{font-size:36px;font-weight:700;margin-top:6px;letter-spacing:-.02em}
+  .row{display:flex;align-items:baseline;gap:28px;margin:12px 0}
+  .row .k{font-size:18px;font-weight:600;color:var(--muted);width:150px;letter-spacing:.1em;text-transform:uppercase}
+  .row .v{font-size:50px;font-weight:700;letter-spacing:-.02em}
+  .row .v small{font-weight:400;font-size:24px;color:var(--muted);display:block;margin-top:2px;letter-spacing:0}
+  .dark{background:var(--dark);color:#FAFAFA}
+  .dark .sub{color:#A1A1AA}
+  .bar{position:absolute;left:0;bottom:0;height:6px;background:var(--fg)}
 </style>
 </head>
 <body>
 <div id="stage">
-  <canvas id="net" width="1280" height="720"></canvas>
-
   <section class="scene center" id="s1">
-    <div class="mark" id="mark1"></div>
-    <div class="wordmark" id="wm">ananse<span class="dot">.</span></div>
-    <div class="sub" id="s1sub">We weave the <b>web</b> your business runs on.</div>
+    <div class="ph" id="logo">LOGO</div>
+    <div class="name" id="nm">Company Name</div>
+    <div class="sub" id="s1sub">Websites · Data · Marketing analytics · Automation</div>
   </section>
 
   <section class="scene" id="s2">
-    <div class="eyebrow">Technology services for growing businesses</div>
-    <h2 class="big" style="margin-top:14px"><span class="line">Websites, stock, data</span><span class="line">and AI, built in Ghana</span><span class="line">for <em>the world.</em></span></h2>
+    <div class="eyebrow">Built in Ghana for the world</div>
+    <h2 class="big" style="margin-top:14px"><span class="line">Websites that win customers.</span><span class="line">Data that drives decisions.</span><span class="line" style="color:var(--muted)">Automations that save hours.</span></h2>
   </section>
 
   <section class="scene" id="s3">
+    <div class="eyebrow">What we do</div>
+    <div class="grid">
+      <div class="card"><div class="k">Service 1</div><div class="v">Website design &amp; build</div></div>
+      <div class="card"><div class="k">Service 2</div><div class="v">Data services</div></div>
+      <div class="card"><div class="k">Service 3</div><div class="v">Ad &amp; marketing analytics</div></div>
+      <div class="card"><div class="k">Service 4</div><div class="v">Automations &amp; integrations</div></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s4">
     <div class="eyebrow">The background</div>
     <div class="row"><span class="k">Degree</span><span class="v">BSc Computer Science</span></div>
     <div class="row"><span class="k">Ghana</span><span class="v">Ecobank · Comsys<small>Two of Ghana's leading bank and technology firms</small></span></div>
     <div class="row"><span class="k">Global</span><span class="v">AmaliTech<small>Data &amp; software engineering on projects across the world</small></span></div>
   </section>
 
-  <section class="scene" id="s4">
-    <div class="eyebrow">What we build</div>
-    <div class="grid">
-      <div class="svc"><i></i>Website + ads + management</div>
-      <div class="svc"><i></i>SME stock &amp; inventory</div>
-      <div class="svc"><i></i>SEO &amp; marketing analytics</div>
-      <div class="svc"><i></i>Delivery partner integration</div>
-      <div class="svc"><i></i>Data services</div>
-      <div class="svc"><i></i>ERP &amp; hospital systems</div>
-      <div class="svc"><i></i>AI &amp; RAG knowledge bases</div>
-      <div class="svc"><i></i>Mobile apps</div>
-    </div>
-  </section>
-
-  <section class="scene" id="s5">
-    <div class="eyebrow">For SMEs, one connected thread</div>
-    <h2 class="big" style="font-size:64px">From first click <em>to doorstep.</em></h2>
-    <div class="flow">
-      <div class="step"><div class="k">Get found</div><div class="v">Website + ads</div></div><span class="arrow">→</span>
-      <div class="step"><div class="k">Stay stocked</div><div class="v">Inventory</div></div><span class="arrow">→</span>
-      <div class="step"><div class="k">Deliver</div><div class="v">Delivery partners</div></div>
-    </div>
-  </section>
-
-  <section class="scene center" id="s6">
-    <div class="mark" id="mark2"></div>
-    <h2 class="big" style="margin-top:18px">Let's build <em>what's next.</em></h2>
-    <div class="sub">ananse · technology services</div>
+  <section class="scene center dark" id="s5">
+    <h2 class="big">Let's put your data to work.</h2>
+    <div class="sub">Book a free discovery call · Company Name</div>
   </section>
 
   <div class="bar" id="bar"></div>
 </div>
 <script>
-const MARK = `<svg viewBox="0 0 64 64"><path d="M32 32L32.0 10.0M32 32L51.1 21.0M32 32L51.1 43.0M32 32L32.0 54.0M32 32L12.9 43.0M32 32L12.9 21.0M32.0 24.0Q35.0 26.8 38.9 28.0Q38.0 32.0 38.9 36.0Q35.0 37.2 32.0 40.0Q29.0 37.2 25.1 36.0Q26.0 32.0 25.1 28.0Q29.0 26.8 32.0 24.0M32.0 17.0Q37.6 22.3 45.0 24.5Q43.2 32.0 45.0 39.5Q37.6 41.7 32.0 47.0Q26.4 41.7 19.0 39.5Q20.8 32.0 19.0 24.5Q26.4 22.3 32.0 17.0M32.0 10.0Q40.2 17.8 51.1 21.0Q48.4 32.0 51.1 43.0Q40.2 46.2 32.0 54.0Q23.8 46.2 12.9 43.0Q15.6 32.0 12.9 21.0Q23.8 17.8 32.0 10.0" fill="none" stroke="#F3F6F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="45.0" cy="24.5" r="4.4" fill="#F2B53A"/></svg>`;
-document.getElementById('mark1').innerHTML = MARK;
-document.getElementById('mark2').innerHTML = MARK;
-const DURATION = 25;
+const DURATION=22;
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const ease=x=>{x=clamp(x);return 1-Math.pow(1-x,3)};
 const win=(t,a,b,f=.4)=>clamp(Math.min((t-a)/f,(b-t)/f));
 const $=id=>document.getElementById(id);
-let seed=11;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
-const nodes=Array.from({length:42},()=>({x:rnd()*1280,y:rnd()*720,vx:(rnd()-.5)*14,vy:(rnd()-.5)*14,g:rnd()<.18}));
-const ctx=$('net').getContext('2d');
-function drawNet(t,a){
-  ctx.clearRect(0,0,1280,720);
-  const p=nodes.map(n=>({x:(n.x+n.vx*t+5120)%1280,y:(n.y+n.vy*t+2880)%720,g:n.g}));
-  for(let i=0;i<p.length;i++)for(let j=i+1;j<p.length;j++){const d=Math.hypot(p[i].x-p[j].x,p[i].y-p[j].y);
-    if(d<190){ctx.strokeStyle=`rgba(243,246,244,${a*.12*(1-d/190)})`;ctx.beginPath();ctx.moveTo(p[i].x,p[i].y);ctx.lineTo(p[j].x,p[j].y);ctx.stroke()}}
-  for(const q of p){ctx.fillStyle=q.g?`rgba(242,181,58,${a*.9})`:`rgba(243,246,244,${a*.35})`;ctx.beginPath();ctx.arc(q.x,q.y,q.g?3.2:2,0,7);ctx.fill()}
-}
-function mark(el,pr){const path=el.querySelector('path'),c=el.querySelector('circle');const L=path.getTotalLength();
-  path.style.strokeDasharray=L;path.style.strokeDashoffset=L*(1-ease(pr));c.setAttribute('r',4.4*ease((pr-.7)/.3));}
 function anim(sel,t,t0,gap,dur,axis,dist){document.querySelectorAll(sel).forEach((el,i)=>{const p=ease((t-t0-i*gap)/dur);el.style.opacity=p;el.style.transform=`translate${axis}(${dist*(1-p)}px)`})}
 function render(t){
-  drawNet(t,.4+.6*win(t,0,DURATION,1));
-  $('s1').style.opacity=win(t,0,4.2);mark($('mark1'),(t-.2)/1.6);
-  $('wm').style.opacity=ease((t-1.3)/.6);$('wm').style.transform=`translateY(${30*(1-ease((t-1.3)/.6))}px)`;
-  $('s1sub').style.opacity=ease((t-2.1)/.6);
-  $('s2').style.opacity=win(t,4.2,8);anim('#s2 .line',t,4.4,.35,.6,'X',-40);
-  $('s3').style.opacity=win(t,8,12.4);anim('#s3 .row',t,8.3,.6,.6,'Y',24);
-  $('s4').style.opacity=win(t,12.4,17.6);anim('#s4 .svc',t,12.7,.28,.5,'X',30);
-  $('s5').style.opacity=win(t,17.6,21.6);anim('#s5 .step, #s5 .arrow',t,18.2,.3,.5,'Y',20);
-  $('s6').style.opacity=clamp((t-21.6)/.4);mark($('mark2'),(t-21.7)/1.3);
+  $('s1').style.opacity=win(t,0,3.8);
+  $('logo').style.opacity=ease((t-.2)/.6);$('logo').style.transform=`scale(${.85+.15*ease((t-.2)/.6)})`;
+  $('nm').style.opacity=ease((t-.8)/.6);$('nm').style.transform=`translateY(${24*(1-ease((t-.8)/.6))}px)`;
+  $('s1sub').style.opacity=ease((t-1.5)/.6);
+  $('s2').style.opacity=win(t,3.8,8);anim('#s2 .line',t,4,.45,.6,'X',-40);
+  $('s3').style.opacity=win(t,8,13);anim('#s3 .card',t,8.3,.35,.5,'Y',24);
+  $('s4').style.opacity=win(t,13,17.8);anim('#s4 .row',t,13.3,.6,.6,'Y',24);
+  $('s5').style.opacity=clamp((t-17.8)/.4);anim('#s5 > *',t,18,.4,.6,'Y',20);
   $('bar').style.width=(1280*clamp(t/DURATION))+'px';
+  $('bar').style.background=t>17.8?'#FAFAFA':'#18181B';
 }
 window.render=render;window.DURATION=DURATION;
 const q=new URLSearchParams(location.search);render(q.has('t')?+q.get('t'):6);
