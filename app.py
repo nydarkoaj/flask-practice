@@ -1,12 +1,16 @@
 """Company website server.
 
 Serves the static site in website/ and accepts contact-form enquiries at POST /api/contact.
-Enquiries are appended to data/enquiries.jsonl (not committed to git).
+Each enquiry is appended to data/enquiries.jsonl (not committed to git) and, when SMTP
+settings are present, emailed to ENQUIRY_TO. See DEPLOY.md for the environment variables.
 """
 import json
+import logging
 import os
 import re
+import smtplib
 from datetime import datetime, timezone
+from email.message import EmailMessage
 
 from flask import Flask, abort, jsonify, request, send_from_directory
 
@@ -24,6 +28,46 @@ SERVICES = {
 LIMITS = {"name": 120, "company": 160, "contact": 160, "message": 5000}
 
 app = Flask(__name__, static_folder=None)
+log = logging.getLogger("website")
+
+
+def email_enquiry(enquiry):
+    """Email the enquiry if SMTP is configured. Returns True when sent or not configured."""
+    host, to = os.environ.get("SMTP_HOST"), os.environ.get("ENQUIRY_TO")
+    if not host or not to:
+        return True
+    msg = EmailMessage()
+    msg["Subject"] = f"Website enquiry: {enquiry['service']} from {enquiry['name']}"
+    msg["From"] = os.environ.get("SMTP_FROM") or os.environ.get("SMTP_USER") or to
+    msg["To"] = to
+    if "@" in enquiry["contact"]:
+        msg["Reply-To"] = enquiry["contact"]
+    msg.set_content("\n".join(f"{k.replace('_', ' ').title()}: {v}" for k, v in enquiry.items()))
+    try:
+        with smtplib.SMTP(host, int(os.environ.get("SMTP_PORT", "587")), timeout=15) as smtp:
+            smtp.starttls()
+            if os.environ.get("SMTP_USER"):
+                smtp.login(os.environ["SMTP_USER"], os.environ.get("SMTP_PASSWORD", ""))
+            smtp.send_message(msg)
+        return True
+    except Exception:  # keep the enquiry on disk and tell the visitor to use another channel
+        log.exception("Could not email enquiry")
+        return False
+
+
+@app.after_request
+def security_headers(resp):
+    resp.headers.setdefault("X-Content-Type-Options", "nosniff")
+    resp.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    resp.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
+    if request.headers.get("X-Forwarded-Proto") == "https":
+        resp.headers.setdefault("Strict-Transport-Security", "max-age=31536000")
+    return resp
+
+
+@app.get("/healthz")
+def healthz():
+    return "ok"
 
 
 @app.get("/")
@@ -56,6 +100,8 @@ def contact():
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(ENQUIRY_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(enquiry, ensure_ascii=False) + "\n")
+    if not email_enquiry(enquiry):
+        return jsonify(ok=False, error="The enquiry could not be sent. Please contact us by phone or email."), 502
     return jsonify(ok=True)
 
 

@@ -8,6 +8,8 @@ The company name, logo and colours are placeholders ("Company Name", a dashed lo
 
 ```
 app.py                  Flask server: serves the site and receives contact-form enquiries
+render.yaml             Render deployment blueprint (see DEPLOY.md)
+DEPLOY.md               Hosting, email and custom-domain setup
 website/index.html      The website (single page)
 website/BRIEF.md        Positioning, services, tone and placeholder notes
 website/video/          17-second promo video, its HTML source and render script
@@ -27,9 +29,11 @@ Open http://127.0.0.1:5000. You can also open `website/index.html` directly in a
 
 ## Contact form
 
-The form posts JSON to `POST /api/contact`. Valid enquiries are appended to `data/enquiries.jsonl` (one JSON object per line, not committed to git). Set `ENQUIRY_DIR` to store them elsewhere.
+The form posts JSON to `POST /api/contact`. Each valid enquiry is appended to `data/enquiries.jsonl` (not committed to git) and emailed to `ENQUIRY_TO` when the SMTP variables are set. See `.env.example` for the variables and `ENQUIRY_DIR` to store the file elsewhere.
 
-Next step before launch: forward enquiries to an inbox (for example via an SMTP or email API call in `app.py`).
+## Deploy with a custom domain
+
+See [DEPLOY.md](DEPLOY.md). The repo includes a `render.yaml` blueprint for Render, with step-by-step instructions for email settings, buying a domain and pointing it at the site.
 
 ## Docker
 
