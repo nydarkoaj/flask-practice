@@ -32,12 +32,12 @@ def card_view(index):
 def api_card_list():
     return jsonify(db)
 
-# Nyra Technologies brand site (static files in nyra-brand/)
+# Ananse Technologies brand site (static files in brand/)
 from flask import send_from_directory
 import os
-NYRA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'nyra-brand')
+BRAND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'brand')
 
-@app.route('/nyra/')
-@app.route('/nyra/<path:filename>')
-def nyra_site(filename='index.html'):
-    return send_from_directory(NYRA_DIR, filename)
+@app.route('/site/')
+@app.route('/site/<path:filename>')
+def brand_site(filename='index.html'):
+    return send_from_directory(BRAND_DIR, filename)

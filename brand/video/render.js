@@ -1,4 +1,4 @@
-// Renders promo.html to nyra-promo.mp4 (1280x720, 30fps). Usage: node render.js
+// Renders promo.html to ananse-promo.mp4 (1280x720, 30fps). Usage: node render.js
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const path = require('path');
@@ -11,14 +11,14 @@ const path = require('path');
   const fps = 30, dur = await page.evaluate(() => window.DURATION);
   const ff = spawn('ffmpeg', ['-y', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
     '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '20', '-preset', 'medium', '-movflags', '+faststart',
-    path.join(__dirname, 'nyra-promo.mp4')], { stdio: ['pipe', 'ignore', 'inherit'] });
+    path.join(__dirname, 'ananse-promo.mp4')], { stdio: ['pipe', 'ignore', 'inherit'] });
   for (let f = 0; f < fps * dur; f++) {
     await page.evaluate(t => window.render(t), f / fps);
     ff.stdin.write(await page.screenshot({ type: 'jpeg', quality: 92 }));
   }
   ff.stdin.end();
   await new Promise(r => ff.on('close', r));
-  for (const [t, n] of [[2.8, 'still-logo'], [10.5, 'still-background'], [16, 'still-services']]) {
+  for (const [t, n] of [[3, 'still-logo'], [10.5, 'still-background'], [16.5, 'still-services'], [20.5, 'still-sme']]) {
     await page.evaluate(t => window.render(t), t);
     await page.screenshot({ path: path.join(__dirname, n + '.png') });
   }
