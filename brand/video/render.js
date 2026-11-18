@@ -18,7 +18,7 @@ const path = require('path');
   }
   ff.stdin.end();
   await new Promise(r => ff.on('close', r));
-  for (const [t, n] of [[2.6, 'still-intro'], [11, 'still-services'], [16, 'still-background'], [20.5, 'still-cta']]) {
+  for (const [t, n] of [[2.4, 'still-intro'], [11, 'still-services'], [15.5, 'still-cta']]) {
     await page.evaluate(t => window.render(t), t);
     await page.screenshot({ path: path.join(__dirname, n + '.png') });
   }
