@@ -1,18 +1,16 @@
-# Use the python image that is compatible with the current version of Flask
-FROM python:3.13  
+FROM python:3.13-slim
 
-# create a directory for the app
 WORKDIR /code
 
-# Copy requirements to the directory and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the code
-COPY . . 
+COPY app.py .
+COPY website ./website
 
-# Expose the port the app runs on
+# Enquiries are written here; mount a volume to keep them between deploys
+ENV ENQUIRY_DIR=/data
+VOLUME ["/data"]
+
 EXPOSE 5000
-
-# command to run the app
-CMD ["flask","run","--host=0.0.0.0"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "app:app"]

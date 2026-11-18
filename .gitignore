@@ -1,3 +1,7 @@
 flask-getting-started/
 __pycache__/
 .env
+
+# Contact form submissions and local backups
+data/
+*.zip

@@ -31,13 +31,3 @@ def card_view(index):
 @app.route('/api/card/')
 def api_card_list():
     return jsonify(db)
-
-# Ananse Technologies brand site (static files in brand/)
-from flask import send_from_directory
-import os
-BRAND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'brand')
-
-@app.route('/site/')
-@app.route('/site/<path:filename>')
-def brand_site(filename='index.html'):
-    return send_from_directory(BRAND_DIR, filename)

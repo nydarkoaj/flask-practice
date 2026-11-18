@@ -3,4 +3,6 @@ __pycache__
 *.pyo
 *.pyd
 .env
-flask-getting-started
+flask-getting-starteddata
+*.zip
+archive

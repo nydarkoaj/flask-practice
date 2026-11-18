@@ -214,11 +214,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <label for="f-company">Company<input id="f-company" name="company" autocomplete="organization"></label>
         <label for="f-contact">Email or phone<input id="f-contact" name="contact" autocomplete="email" required></label>
         <label for="f-need">Service
-          <select id="f-need" name="need">
+          <select id="f-need" name="service">
             <option>Website design and build</option><option>Data services</option>            <option>Business automation and integration</option><option>More than one</option><option>Other</option>
           </select></label>
         <label for="f-msg" class="full">Project details<textarea id="f-msg" name="message"></textarea></label>
-        <div class="form-foot full"><button class="btn" type="submit">Send enquiry</button><p class="note" id="f-note" role="status"></p></div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+        <div class="form-foot full"><button class="btn" type="submit" id="f-submit">Send enquiry</button><p class="note" id="f-note" role="status"></p></div>
       </form>
     </div>
   </div>
@@ -229,11 +230,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 </footer>
 
 <script>
-// TODO: connect to a form backend (e.g. a Flask POST route or a form service). Front-end only for now.
-document.getElementById('contact-form').addEventListener('submit',e=>{
-  e.preventDefault();const f=e.target,note=document.getElementById('f-note');
+// Sends the form to POST /api/contact (app.py). Where no server is running, the visitor is told to get in touch directly.
+document.getElementById('contact-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const f=e.target,note=document.getElementById('f-note'),btn=document.getElementById('f-submit');
   if(!f.name.value.trim()||f.contact.value.trim().length<6){note.textContent='Enter your name and an email address or phone number.';return}
-  note.textContent='Online enquiries are not yet enabled. Please contact us by phone or email.';
+  btn.disabled=true;note.textContent='Sending…';
+  try{
+    const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f)))});
+    const out=await res.json().catch(()=>({}));
+    if(res.ok&&out.ok){f.reset();note.textContent='Enquiry sent. We will reply within one working day.';}
+    else note.textContent=out.error||'The enquiry could not be sent. Please contact us by phone or email.';
+  }catch(err){note.textContent='The enquiry could not be sent. Please contact us by phone or email.';}
+  finally{btn.disabled=false;}
 });
 </script>
 </body>

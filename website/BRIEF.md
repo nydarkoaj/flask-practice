@@ -17,6 +17,6 @@ Marketing analytics and the founder credentials section are removed for now.
 Serious and direct. Plain descriptions of what is delivered; no slogans. Layout uses ruled rows and a label column instead of cards.
 
 ## Files
-- `index.html`: website (open directly, or run the Flask app and visit `/site/`)
+- `index.html`: website (open directly, or run `flask --app app run` from the repo root and visit `/`)
 - `video/promo.mp4`: 17-second promo (1280×720). Re-render with `node video/render.js` after editing `video/promo.html`.
 - `video/still-*.png`: stills for thumbnails and social posts
